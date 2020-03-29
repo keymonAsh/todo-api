@@ -22,4 +22,14 @@ router.post('/', function(req, res) {
     })
 })
 
+router.get('/:id', function(req, res) {
+    db.Todo.findById(req.params.id)
+    .then(function(todo) {
+        res.json(todo)
+    })
+    .catch(function(err) {
+        res.json(err)
+    })
+})
+
 module.exports = router
