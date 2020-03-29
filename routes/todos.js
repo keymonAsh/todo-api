@@ -32,4 +32,14 @@ router.get('/:id', function(req, res) {
     })
 })
 
+router.put('/:id', function(req, res) {
+    db.Todo.findByIdAndUpdate(req.params.id, req.body, { new: true })
+    .then(function(todo) {
+        res.json(todo)
+    })
+    .catch(function(err) {
+        res.json(err)
+    })
+})
+
 module.exports = router
